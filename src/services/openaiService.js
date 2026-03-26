@@ -15,9 +15,10 @@ class OpenAIService {
 async sendMessage(message) {
   try {
     const response = await axios.post(
-      "https://api.openai.com/v1/responses",   // ✅ NEW API
+      "https://api.openai.com/v1/chat/completions",   
       {
-        model: "gpt-4o-mini",
+        model: "gpt-3.5-turbo",
+        messages": [{"role": "user", "content": "Hello, AI!"}],
         input: message
       },
       {
