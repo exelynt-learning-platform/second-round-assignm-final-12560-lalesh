@@ -7,7 +7,7 @@ class OpenAIService {
     this.apiUrl = process.env.REACT_APP_API_URL || API_CONFIG.URL;
 
     if (!this.apiKey) {
-      console.error('OpenAI API key is missing. Please check your .env file.');
+      throw new Error("API key not configured");
     }
   }
 
