@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux';
 import { sendMessage } from '../../store/actions/messageActions';
 import { FiSend, FiSmile } from 'react-icons/fi';
 import styles from './InputArea.module.css';
+import { EMOJIS } from '../../utils/constants';
+
 
 const InputArea = ({ disabled }) => {
   const [message, setMessage] = useState('');
@@ -24,7 +26,7 @@ const InputArea = ({ disabled }) => {
 
   const handleEmoji = () => {
     const emojis = ['😊', '😂', '❤️', '👍', '🎉', '🤔', '😢', '😎'];
-    const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    const randomEmoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
     setMessage(prev => prev + randomEmoji);
   };
 
