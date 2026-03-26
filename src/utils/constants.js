@@ -5,6 +5,8 @@ export const API_CONFIG = {
   TEMPERATURE: 0.7
 };
 
+export const EMOJIS = ['😊', '😂', '❤️', '👍', '🎉', '🤔', '😢', '😎'];
+
 export const UI_CONFIG = {
   MAX_MESSAGE_LENGTH: 2000,
   SCROLL_BEHAVIOR: 'smooth',
