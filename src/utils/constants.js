@@ -1,5 +1,5 @@
 export const API_CONFIG = {
-  URL: 'https://api.openai.com/v1/responses',
+  URL: 'https://api.openai.com/v1/chat/completions',
   MODEL: 'gpt-4o-mini',
   MAX_TOKENS: 1000,
   TEMPERATURE: 0.7
