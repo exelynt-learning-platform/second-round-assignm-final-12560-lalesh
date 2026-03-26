@@ -1,0 +1,27 @@
+.message {
+  display: flex;
+  gap: 12px;
+}
+
+.messageAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.userMessage .messageAvatar {
+  background: #667eea;
+}
+
+.aiMessage .messageAvatar {
+  background: #48bb78;
+}
+
+.messageText {
+  background: white;
+  padding: 12px;
+  border-radius: 12px;
+}
