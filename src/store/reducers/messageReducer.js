@@ -22,7 +22,7 @@ const messageReducer = (state = initialState, action) => {
         messages: [
           ...state.messages,
           {
-            id: Date.now() + Math.random() ,
+            id: Date.now() + '-' + Math.random().toString(36).substr(2, 9),
             text: action.payload.userMessage,
             sender: 'user',
             timestamp: new Date().toISOString()
