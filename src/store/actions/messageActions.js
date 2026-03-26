@@ -29,11 +29,15 @@ export const clearMessages = () => ({
 export const sendMessage = (message) => {
   return async (dispatch) => {
     try {
+      if (!message || message.trim().length === 0) return;
+
       dispatch(sendMessageRequest());
+
       const aiResponse = await openaiService.sendMessage(message);
+
       dispatch(sendMessageSuccess(message, aiResponse));
     } catch (error) {
-      dispatch(sendMessageFailure(error.message || 'Failed to get response from AI'));
+      dispatch(sendMessageFailure(error.message));
     }
   };
 };
