@@ -15,11 +15,21 @@ class OpenAIService {
 async sendMessage(message) {
   try {
     const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",   
+      "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages": [{"role": "user", "content": "Hello, AI!"}],
-        input: message
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful AI assistant."
+          },
+          {
+            role: "user",
+            content: message
+          }
+        ],
+        max_tokens: 1000,
+        temperature: 0.7
       },
       {
         headers: {
@@ -29,18 +39,17 @@ async sendMessage(message) {
       }
     );
 
-    return response.data.output[0].content[0].text;
+    return response.data.choices[0].message.content;
 
   } catch (error) {
-    console.error("OpenAI Error:", error.response?.data || error.message);
-
+    // ✅ safer error handling
     if (error.response?.status === 429) {
-      throw new Error("Rate limit exceeded OR no credits left.");
+      throw new Error("Rate limit exceeded. Try again later.");
     }
-
-    throw new Error("Failed to get response");
+    throw new Error("Failed to fetch AI response");
   }
 }
 }
+
 
 export default new OpenAIService();
